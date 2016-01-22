@@ -14,6 +14,8 @@ var methodOverride = require('method-override');
 var cors = require('cors');
 var path = require('path');
 var expressValidator = require('express-validator');
+var mongoose = require('mongoose');
+var config = require('./config/secrets');
 
 /**
  * Create Express server.
@@ -24,6 +26,14 @@ var app = express();
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3005);
+
+/**
+ * Connect to MongoDB.
+ */
+mongoose.connect(config.db[app.get('env')]);
+mongoose.connection.on('error', function() {
+  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+});
 
 var whitelist = [
   //the ionic app run on real device
@@ -63,7 +73,7 @@ if (app.get('env') === 'production') {
 }
 
 require(path.join(__dirname, '/controllers/api/users')).configure(app);
-require(path.join(__dirname, '/controllers/api/vkAPIs')).configure(app);
+require(path.join(__dirname, '/controllers/api/snapshots')).configure(app);
 
 // if there's no such route
 app.use(function(req, res, next) {

@@ -24,5 +24,9 @@
  */
 
 module.exports = {
-
+  db: {
+    production: process.env.MONGOLAB_URI || 'mongodb://localhost:27017/VKuche',
+    development: process.env.MONGODB || 'mongodb://localhost:27017/VKuche',
+    test: process.env.MONGODB || 'mongodb://localhost:27017/VKuche_test'
+  }
 };
