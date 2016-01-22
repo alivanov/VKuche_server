@@ -1,7 +1,13 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
-  snapshot: {type: mongoose.Schema.Types.ObjectId, ref: 'Snapshot'},
+  snapshot: {
+    createdDT: Date,
+    tracks: [{
+      title: String,
+      vkId: String
+    }]
+  },
   vkId: String,
   vkToken: String
 });

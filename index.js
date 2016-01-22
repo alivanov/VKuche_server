@@ -73,7 +73,6 @@ if (app.get('env') === 'production') {
 }
 
 require(path.join(__dirname, '/controllers/api/users')).configure(app);
-require(path.join(__dirname, '/controllers/api/snapshots')).configure(app);
 
 // if there's no such route
 app.use(function(req, res, next) {

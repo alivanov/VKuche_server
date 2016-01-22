@@ -4,7 +4,7 @@
   "description": "VK audio tracks sync",
   "main": "index.js",
   "scripts": {
-    "test": "grunt dropTestDB && mocha"
+    "test": "grunt dropTestDB && NODE_ENV=test mocha"
   },
   "repository": {
     "type": "git",

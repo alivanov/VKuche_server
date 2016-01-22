@@ -14,9 +14,9 @@ exports.configure = function(app) {
   app.get('/api/users/:vkId', ensureAuthenticated, function(req, res, next) {
 
     User.findOne({vkId: req.params.vkId})
-      .populate('snapshot')
       .exec(function(err, user) {
         if (err) {
+          console.log(err);
           return next(new Error('Can not get user data'));
         }
         res.status(200).send({user: user});
@@ -44,6 +44,27 @@ exports.configure = function(app) {
         res.status(200).send({user: user});
       })
     });
+  });
+
+  app.put('/api/users/:vkId/snapshot', ensureAuthenticated, function(req, res, next) {
+
+    User.findOne({vkId: req.params.vkId})
+      .exec(function(err, user) {
+        if (err) {
+          return next(new Error('Can not get user info'));
+        }
+        if (!user) {
+          return res.status(200).send({user: null, message: 'User not found, please create one!'});
+        }
+
+        var newSnapshot = req.body.snapshot;
+        var oldSnapshot = user.snapshot;
+
+        //TODO: get difference, send notifications [AI]
+
+        res.status(200).send({user: user});
+
+      });
   });
 
 };
