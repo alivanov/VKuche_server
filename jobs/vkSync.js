@@ -13,7 +13,6 @@ module.exports = function(agenda) {
           console.log(err);
           return done();
         }
-
         async.each(users, function(user, cb) {
           request({
             url: 'https://api.vk.com/method/users.get',
