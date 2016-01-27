@@ -11,7 +11,8 @@ var snaphotSchema = new mongoose.Schema({
     id: Number,
     title: String,
     artist: String
-  }]
+  }],
+  date: {type: Date, default: Date.now}
 
 });
 
