@@ -51,7 +51,6 @@ var corsOptions = {
   credentials: true
 };
 app.use(cors(corsOptions));
-
 app.use(compress());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -103,6 +102,8 @@ app.use(function(err, req, res, next) {
   }
 });
 
+require('./worker')(app);
+
 /**
  * Start Express server.
  */
@@ -111,4 +112,3 @@ app.listen(app.get('port'), function() {
 });
 
 module.exports = app;
-

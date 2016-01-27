@@ -2,7 +2,7 @@
  * Created by alivanov on 12/01/16.
  */
 var request = require('supertest');
-var app = require('../index.js');
+var app = require('../server.js');
 
 describe('Core', function() {
   describe('GET /', function() {

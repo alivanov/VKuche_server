@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alivanov/VKuche_server#readme",
   "dependencies": {
+    "agenda": "^0.7.7",
     "async": "^1.5.2",
     "body-parser": "^1.14.2",
     "compression": "^1.6.0",

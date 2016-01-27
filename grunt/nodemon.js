@@ -4,7 +4,7 @@
 
 module.exports = {
   dev: {
-    script: 'index.js',
+    script: 'server.js',
     options: {
       ignore: [
         'node_modules/**',

@@ -6,7 +6,7 @@ var chai = require('chai');
 var should = chai.should();
 var expect = chai.expect;
 var request = require('supertest');
-var app = require('../index.js');
+var app = require('../server.js');
 var User = require('../models/user');
 
 describe('Users', function() {
